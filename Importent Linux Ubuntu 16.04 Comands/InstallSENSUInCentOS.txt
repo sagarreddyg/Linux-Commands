@@ -3,7 +3,6 @@ Install Redis On CentOS.
 
 >>sudo yum update -y
 >>sudo yum install epel-release -y
->>sudo yum install erlang -y
 >>sudo yum install redis -y
 >>sudo service redis start
 >>sudo service redis-sentinel start
@@ -12,6 +11,28 @@ Install Redis On CentOS.
 Now verify redis is working or not?
 >>redis-cli ping
 if we get "PONG" it's running fine.
+
+Install RabbitMQ.
+------------------------------------
+install Erlang by going to the official webpage.
+>>wget https://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
+>>rpm -Uvh erlang-solutions-1.0-1.noarch.rpm
+>>rpm --import https://packages.erlang-solutions.com/rpm/erlang_solutions.asc
+>> vim /etc/yum.repos.d/erl.repo
+   ##add the following content##
+[erlang-solutions]
+name=CentOS $releasever - $basearch - Erlang Solutions
+baseurl=https://packages.erlang-solutions.com/rpm/centos/$releasever/$basearch
+gpgcheck=1
+gpgkey=https://packages.erlang-solutions.com/rpm/erlang_solutions.asc
+enabled=1
+>>sudo yum install erlang
+>>sudo yum install https://dl.bintray.com/rabbitmq/all/rabbitmq-server/3.7.4/rabbitmq-server-3.7.4-1.el6.noarch.rpm
+>>systemctl start rabbitmq-server
+>>systemctl enable rabbitmq-server
+>>systemctl status rabbitmq-server
+
+
 
 Install Sensu Now on CentOs7
 -----------------------------

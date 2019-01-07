@@ -1,0 +1,48 @@
+Install Redis On CentOS.
+---------------------------------
+
+>>sudo yum update -y
+>>sudo yum install epel-release -y
+>>sudo yum install erlang -y
+>>sudo yum install redis -y
+>>sudo service redis start
+>>sudo service redis-sentinel start
+>>sudo /sbin/chkconfig redis on
+>>sudo /sbin/chkconfig redis-sentinel on
+Now verify redis is working or not?
+>>redis-cli ping
+if we get "PONG" it's running fine.
+
+Install Sensu Now on CentOs7
+-----------------------------
+>>echo '[sensu]
+name=sensu
+baseurl=https://sensu.global.ssl.fastly.net/yum/$releasever/$basearch/
+gpgcheck=0
+enabled=1' | sudo tee /etc/yum.repos.d/sensu.repo
+>>sudo yum install sensu
+>>sudo yum install uchiwa -y
+>>sudo systemctl start sensu-server
+>>sudo systemctl start sensu-client
+>>sudo systemctl start sensu-api
+>>sudo systemctl start uchiwa
+>>sudo systemctl enable sensu-server
+>>sudo systemctl enable sensu-client
+>>sudo systemctl enable sensu-api
+>>sudo systemctl enable uchiwa
+
+Start Your firewall and allow 3000 to access uchiwa
+-----------------------------------------------------
+systemctl disable --now iptables.service
+systemctl disable --now ip6tables.service
+systemctl disable --now etables.service
+systemctl disable --now ipset.service
+dnf install firewalld firewall-config firewall-applet
+systemctl unmask --now firewalld.service
+systemctl enable --now firewalld.service
+systemctl status firewalld
+sudo firewall-cmd --permanent --zone=public --add-port=3000/tcp
+sudo firewall-cmd --reload
+
+
+

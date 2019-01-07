@@ -1,0 +1,28 @@
+>> yum -y update
+>>yum -y groupinstall "GNOME Desktop"
+>>ln -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.target
+>>yum -y install epel-release
+>>yum -y update
+>>yum clean all
+>>yum groups mark install "X Window system"
+>>yum -y groupinstall "MATE Desktop"
+>>systemctl set-default graphical.target
+>>yum -y install epel-release
+>>yum -y update
+>>yum clean all
+>>yum groups mark install "X Window system"
+>> yum -y groupinstall xfce
+>>systemctl set-default graphical.target
+>>yum -y install xrdp tigervnc-server
+>>systemctl enable firewalld
+>>systemctl start firewalld
+>>systemctl status firewalld
+>>firewall-cmd --permanent --zone=public --add-port=3389/tcp
+>>firewall-cmd --reload
+>>systemctl start xrdp
+>>systemctl enable xrdp
+>>netstat -antup | grep xrdp
+>>systemctl status xrdp
+
+
+Now connect your CentOs using RDC.

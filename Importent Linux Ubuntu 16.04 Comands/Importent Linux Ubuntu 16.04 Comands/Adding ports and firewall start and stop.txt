@@ -1,0 +1,22 @@
+Issue the following command to list currently open ports.
+
+>>firewall-cmd --list-ports
+
+Issue the following command to list zones.
+
+>>firewall-cmd --get-zones
+
+Issue the following command to list the zone containing eth0.
+
+>>firewall-cmd --get-zone-of-interface=eth0
+
+Issue the following command to open port 1191 for TCP traffic.
+
+>>firewall-cmd --add-port 1191/tcp
+
+Issue the following command to open port 1191 for TCP traffic after reboot. Use this command to make changes persistent.
+
+>>firewall-cmd --permanent --add-port 1191/tcp
+
+>>systemctl stop firewalld 
+>>systemctl start firewalld

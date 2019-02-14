@@ -1,3 +1,9 @@
+To Install.
+>>install firewalld
+To uninstall 
+>>sudo apt-get remove firewalld
+           OR
+>>sudo apt-get purge firewalld
 Issue the following command to list currently open ports.
 
 >>firewall-cmd --list-ports
@@ -18,5 +24,11 @@ Issue the following command to open port 1191 for TCP traffic after reboot. Use 
 
 >>firewall-cmd --permanent --add-port 1191/tcp
 
+>>firewall-cmd --zone=public --add-port=8080/tcp --permanent
+
 >>systemctl stop firewalld 
 >>systemctl start firewalld
+
+To check all opened ports in linux.
+
+>>sudo lsof -i -P -n | grep LISTEN

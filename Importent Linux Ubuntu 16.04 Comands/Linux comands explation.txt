@@ -1,17 +1,3 @@
-vim  /var/log/dcn/stage/dcn_order_stage.log
-
-tail -f /var/log/dcn/stage/dcn_stage.log
-
-tail -f /var/log/dcn/stage/dcn_order_stage.log
-
-tail -f /var/log/dcn/stageyum/dcn_stage_yum.log
-
-tail -f /var/log/dcn/stageyum/dcn_order_stage_yum.log
-
-/etc/init.d/dcn_order_stage restart
-
-tail -f /var/log/dcn/
-
 
 In Linux/Unix, everything is a file. Regular file, Directories, and even Devices are files. Every File has an associated number called File Descriptor (FD). 
  Ex : Your screen also has a File Descriptor.

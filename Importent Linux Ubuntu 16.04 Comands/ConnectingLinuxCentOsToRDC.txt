@@ -10,7 +10,6 @@
 >>yum -y install epel-release
 >>yum -y update
 >>yum clean all
->>yum groups mark install "X Window system"
 >> yum -y groupinstall xfce
 >>systemctl set-default graphical.target
 >>yum -y install xrdp tigervnc-server
